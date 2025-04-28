@@ -1,0 +1,5 @@
+["acesso-a-informacao", "cambio-e-capitais-internacionais", 
+"economia-e-financas", "inclusao-financeira", "sfn", 
+"sistema-de-pagamentos-brasileiro"]
+
+url = https://dadosabertos.bcb.gov.br/api/3/action/
