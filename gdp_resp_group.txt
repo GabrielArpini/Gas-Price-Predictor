@@ -1,3 +1,0 @@
-{"help": "https://dadosabertos.bcb.gov.br/api/3/action/help_show?name=group_list", "success": true, "result": 
-["acesso-a-informacao", "cambio-e-capitais-internacionais", "economia-e-financas", 
-"inclusao-financeira", "sfn", "sistema-de-pagamentos-brasileiro"]}

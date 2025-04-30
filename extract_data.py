@@ -24,9 +24,9 @@ def get_gas_y_sem(year: int, semester: int):
 
         with requests.get(file_url, stream=True) as csv_data:
             if csv_data.status_code == 200:
-                os.makedirs("data/gas", exist_ok=True)
+                os.makedirs("data/bronze/gas", exist_ok=True)
                 
-                file_path = f"data/gas/gas_{year}_S0{semester}_raw.csv"
+                file_path = f"data/bronze/gas/gas_{year}_S0{semester}_raw.csv"
                 with open(file_path, "wb") as f:
                     for chunk in csv_data.iter_content(chunk_size=1024):  
                         f.write(chunk)
@@ -49,8 +49,8 @@ def get_gdp_y():
     link = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1207/dados?formato=csv"
     with requests.get(link,stream=True) as csv_data:
         if csv_data.status_code == 200:
-            os.makedirs("data/gdp", exist_ok=True)
-            file_path = f"data/gdp/gdp_{year}_raw.csv"
+            os.makedirs("data/gdp/bronze", exist_ok=True)
+            file_path = f"data/bronze/gdp/gdp_{year}_raw.csv"
             with open(file_path, "wb") as f:
 
                 for chunk in csv_data.iter_content(chunk_size=1024):  
