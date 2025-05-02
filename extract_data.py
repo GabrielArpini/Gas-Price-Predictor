@@ -4,8 +4,7 @@ import os
 from datetime import datetime
 
 # This script will download all the csv and must be imported inside the dag workflow
-# It is possible to add more scripts here and then to the dag task by just importing
-# And a few implementation
+# It is possible to add more scripts here and then do the dag task importing it 
 
 def get_gas_y_sem(year: int, semester: int):
     base_url = 'https://dados.gov.br/dados/api/publico/conjuntos-dados/'
@@ -45,17 +44,18 @@ def get_gdp_y():
     data = response.json()
     first_result = data["result"]["results"][0]
     update_date = first_result["metadata_modified"]
+    print(update_date)
     year = datetime.fromisoformat(update_date).year
     link = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1207/dados?formato=csv"
     with requests.get(link,stream=True) as csv_data:
         if csv_data.status_code == 200:
-            os.makedirs("data/gdp/bronze", exist_ok=True)
+            os.makedirs("data/bronze/gdp", exist_ok=True)
             file_path = f"data/bronze/gdp/gdp_{year}_raw.csv"
             with open(file_path, "wb") as f:
-
                 for chunk in csv_data.iter_content(chunk_size=1024):  
                     f.write(chunk)
                 print(f"File saved as: {file_path}")
         else:
             print(f"Failed to fetch the file. Status code: {csv_data.status_code}")
 
+get_gdp_y()
